@@ -8,40 +8,39 @@ import "./Oraclize.sol";
 
 contract Ownable {
     //  TODO's
-    //  1) create a private '_owner' variable of type address with a public getter function
-    //  2) create an internal constructor that sets the _owner var to the creater of the contract 
-    //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
-    //  4) fill out the transferOwnership function
-    //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
 
+     //  1) create a private '_owner' variable of type address with a public getter function
     address private _owner;
-
-     function getOwner() public view returns (address) {
+    function getOwner() public view returns (address) {
         return _owner;
     }
 
-
+    //  2) create an internal constructor that sets the _owner var to the creater of the contract 
       constructor() internal {
         _owner = msg.sender;
-        emit OwnershipTransfered(address(0), msg.sender);
+        emit OwnershipTransfered(address(0) , _owner);
     }
-
+    
+     //  3) create an 'onlyOwner' modifier that throws if called by any account other than the owner.
     modifier onlyOwner() {
-        require(msg.sender == _owner, "Caller is not contract owner");
+        require(msg.sender == _owner);
         _;
     }
 
-     event OwnershipTransfered(address oldOwner, address newOwner);
 
-
+     //  4) fill out the transferOwnership function
     function transferOwnership(address newOwner) public onlyOwner {
         // TODO add functionality to transfer control of the contract to a newOwner.
         // make sure the new owner is a real address
-         require(msg.sender != address(0), 'Address not valid');
-        _owner = newOwner;
+        require(newOwner != address(0));
         emit OwnershipTransfered(_owner, newOwner);
+        _owner = newOwner;
 
     }
+
+    
+    //  5) create an event that emits anytime ownerShip is transfered (including in the constructor)
+        event OwnershipTransfered(address oldOwner, address newOwner);
 }
 
 //  TODO's: Create a Pausable contract that inherits from the Ownable contract
@@ -70,14 +69,28 @@ contract Pausable is Ownable {
         _paused = false;
      }
     
-   modifier whenNotPaused(){
+     modifier whenNotPaused() {
          require(_paused == false, "Contract paused");
          _;
      }
-     modifier paused(){
+
+     modifier paused() {
          require(_paused == true, "Contract Live");
          _;
      }
+
+      
+    function pause() public whenNotPaused onlyOwner {
+        _paused = true;
+        emit Paused(msg.sender);
+    }
+
+    
+    function unPause() internal  onlyOwner {
+        _paused = false;
+        emit UnPaused(msg.sender);
+    }
+
 }
 
 
@@ -287,8 +300,8 @@ contract ERC721 is Pausable, ERC165 {
         require( to == address(to) && to != address(0), "Invalid address");
         _clearApproval(tokenId);
         _ownedTokensCount[from].decrement();
-        _tokenOwner[tokenId] = to;
         _ownedTokensCount[to].increment();
+        _tokenOwner[tokenId] = to;
         emit Transfer(from, to, tokenId);
 
         
@@ -554,8 +567,9 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
     // require the token exists before setting
 
     function setTokenURI(uint256 tokenId) internal {
-        require(_exists(tokenId), "token does not exist");
-        _tokenURIs[tokenId] = strConcat(_baseTokenURI, uint2str(tokenId));
+         require(_exists(tokenId), "token has been taken");
+         string memory tokenIdString = uint2str(tokenId);
+        _tokenURIs[tokenId] = strConcat(_baseTokenURI, tokenIdString);
     }
 
 }
@@ -570,16 +584,26 @@ contract ERC721Metadata is ERC721Enumerable, usingOraclize {
 //      -calls the superclass mint and setTokenURI functions
 
 
-contract ERC721MintableComplete is ERC721Metadata {
+contract  CustomERC721Token is ERC721Metadata {
 
-   constructor (string memory name, string memory symbol) 
-       ERC721Metadata(name, symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public {
+   constructor (string memory name, string memory symbol)        
+       ERC721Metadata(name, symbol, "https://s3-us-west-2.amazonaws.com/udacity-blockchain/capstone/") public{
 
             }
 
-    function mint(address to, uint256 tokenId) public onlyOwner whenNotPaused returns(bool){
+    event TokenMinted(address to, uint256 tokenId);        
+
+    function mint(address to, uint256 tokenId) public returns(bool) {
+         require(
+            msg.sender == getOwner(),
+            "Only contract owner can mint a token!"
+        );
+
         super._mint(to, tokenId);
-        setTokenURI(tokenId);
+        super.setTokenURI(tokenId);
+        emit TokenMinted(to, tokenId);
+
+
         return true;
     }
     

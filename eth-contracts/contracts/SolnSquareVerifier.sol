@@ -4,7 +4,7 @@ import './SquareVerifier.sol';
 import './ERC721Mintable.sol';
 
 // TODO define a contract call to the zokrates generated solidity contract <Verifier> or <renamedVerifier>
-contract SolnSquareVerifier is ERC721MintableComplete{
+contract SolnSquareVerifier is CustomERC721Token{
 
 
 // TODO define another contract named SolnSquareVerifier that inherits from your ERC721Mintable class
@@ -33,17 +33,17 @@ event TokenMint(uint256 index, address addr);
 
     constructor(string memory name, string memory symbol)
         public
-        ERC721MintableComplete(name, symbol)
+        CustomERC721Token(name, symbol)
     {
         VerifierContract = new Verifier();
     }
 
-// checks if solution already exits
-modifier checkSolution(uint256 index, address addr) {
-    bytes32 key = keccak256(abi.encodePacked(index, addr));
-    require(solutions[key].addr == address(0), "Solution already exists");
-    _;
-}
+    // checks if solution already exits
+    modifier checkSolution(uint256 index, address addr) {
+        bytes32 key = keccak256(abi.encodePacked(index, addr));
+        require(solutions[key].addr == address(0), "Solution already exists");
+        _;
+    }
 
 
 // TODO Create a function to add the solutions to the array and emit the event
@@ -65,15 +65,15 @@ function mintNFT(
         uint256[2] calldata c,
         uint256[2] calldata inputs,
         uint256 index,
-        address Address
-    ) external checkSolution(index, Address) {
+        address addr
+    ) external checkSolution(index, addr) {
         require(
             VerifierContract.verifyTx(a, b, c, inputs),
             "Solution is not verified"
         );
-        this.addSolutions(index, Address);
-        super.mint(Address, index);
-        emit TokenMint(index, Address);
+        this.addSolutions(index, addr);
+        super.mint(addr, index);
+        emit TokenMint(index, addr);
     }
 }
 
