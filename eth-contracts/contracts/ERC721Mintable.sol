@@ -16,6 +16,10 @@ contract Ownable {
 
     address private _owner;
 
+     function getOwner() public view returns (address) {
+        return _owner;
+    }
+
 
       constructor() internal {
         _owner = msg.sender;
