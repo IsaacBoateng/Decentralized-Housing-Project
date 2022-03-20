@@ -1,0 +1,74 @@
+###TEST###
+cd eth-contracts
+truffle test
+
+###CONTRACT ADDRESSES###
+Verifier :  0xfD71cf82f54B4c9cA7FC0756336db73d15Bd27Ae
+SolnSquareVerifier :  0x33eA10f83C5f955B38c7D0ACE8149657c95aF84b
+
+
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 1
+TokenID:1, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  1
+Minted item. Transaction: 0x45c8a2b72f6e412c1ca6cbc14b885582683792ff10eb161a7ba6264e771c1dc7
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 2
+TokenID:2, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  2
+Minted item. Transaction: 0xd35896545fa6ba045516852acb45cd7164b9b1f2d54d27166093660eddda2513
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 3
+TokenID:3, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  3
+Minted item. Transaction: 0xa8efe8ffc10db711e4fe28f1807957a84331ff87035cc6c754e60cda4c7e2a5d
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 4
+TokenID:4, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  4
+Minted item. Transaction: 0xff4bb57eff19c54979c11be193e139e6bf232f9ce5e04491eb61f7025ef4dc1d
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 5
+TokenID:5, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  5
+Minted item. Transaction: 0x8c7ac46da4bd4439fe6aec4b0dd1169a6c030e1771b04bf9a0fdf3570f2e8da6
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 6
+TokenID:6, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  6
+Minted item. Transaction: 0xa2dc0488fc70d2052317bc2755edf21ad42738211b49f4b57c1ba608ac067b5b
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 7
+TokenID:7, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  7
+Minted item. Transaction: 0x60e5d685f02ed9b2cbeebc260b6195ba4c121eab9a7b6675be113f28da743eb1
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 8
+TokenID:8, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  8
+Minted item. Transaction: 0x3aa01b51371a4b3d0d4f58b47cb65b0ab86cb1bb6b8ff38029609df7e5b2eea7
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 9
+TokenID:9, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  9
+Minted item. Transaction: 0x6c4c713fa87361a90b6ed2535acc39888a849c3047160046af6e6d2b3720c057
+-------------------------------------------
+OWNER_ADDRESS: 0x4b6b4d3C4644AA069eE1Bf2eE919A854C22d3573
+tokenId: 10
+TokenID:10, owner:0x0000000000000000000000000000000000000000
+totalSupplyBefore:  10
+Minted item. Transaction: 0xd38e04cf5341336b261638b65c1b4ce3eba0e996728284a9e5bc6123f4e8a981
+
+###OPENSEA###
+https://testnets.opensea.io/assets/isaacob-v2
+https://testnets.opensea.io/bundles/luxury-homes-G5k
+Listing transaction Hash: 0xb598836dd945c557981a4b8749716ef62abb02911cfbdb4300d5f5d479199320(https://rinkeby.etherscan.io/tx/0xb598836dd945c557981a4b8749716ef62abb02911cfbdb4300d5f5d479199320)
+purchasing_Account: https://testnets.opensea.io/account

@@ -16,6 +16,7 @@ contract('TestSquareVerifier', accounts => {
 
     // Test verification with correct proof
     // - use the contents from proof.json generated from zokrates steps
+	/*
     let proof = {
         "proof": {
             "a": ["0x2bea28ad70d09795705e8377a6543bd4c12c7384c2510a6a27aa4e4ef52e781d", "0x2e5e7e1be90dd4260290ff84f81a0e34c8673133bd708548a2d7938993c774cf"],
@@ -24,6 +25,7 @@ contract('TestSquareVerifier', accounts => {
         },
         "inputs": ["0x0000000000000000000000000000000000000000000000000000000000000009", "0x0000000000000000000000000000000000000000000000000000000000000001"]
     }
+	*/
 
     beforeEach(async () => {
 	});
