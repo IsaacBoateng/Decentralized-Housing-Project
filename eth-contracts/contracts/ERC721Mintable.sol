@@ -277,7 +277,6 @@ contract ERC721 is Pausable, ERC165 {
         require(to != address(0), "Invalid address");
         _tokenOwner[tokenId] = to;
         _ownedTokensCount[to].increment();
-
          emit Transfer(address(0), to, tokenId);
     }
 

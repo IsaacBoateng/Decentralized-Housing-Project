@@ -30,7 +30,6 @@ contract SolnSquareVerifier is CustomERC721Token{
 // TODO define an array of the above struct
 Solution[]  uniqSolutions;
 
-uint256 counter = 0;
 
 // TODO define a mapping to store unique solutions submitted
 mapping(bytes32 => Solution) private solutions;
@@ -55,7 +54,6 @@ event TokenMint(uint256 index, address addr);
         bytes32 key = keccak256(abi.encodePacked(index, addr));
         solutions[key] = solution;
         uniqSolutions.push(solution);
-        counter++;
         emit SolutionAdded(index, addr); 
 }
 
