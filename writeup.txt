@@ -1,6 +1,9 @@
 ###TEST###
 cd eth-contracts
 truffle test
+Truffle v5.5.4
+
+
 
 ###CONTRACT ADDRESSES###
 Verifier :  0xfD71cf82f54B4c9cA7FC0756336db73d15Bd27Ae
